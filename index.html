@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Per Arne Glorvigen</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body style="background-color:black">
+    <div class="banner">
+      <div class="navbar">
+        <a href="index.html"><img src="img/logo.png" class="logo"></a>
+        <ul>
+          <li><a href="performances.html">Performances</a></li>
+          <li><a href="discography.html">Discography</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </div>
+      </div>
+      <div class="content">
+        <img id="centerImg" class="image" src="img/front2.jpg">
+        <script type = "text/javascript">
+          var image = document.getElementById("centerImg");
+          var currentPos = 0;
+          var images = ["img/front2.jpg", "img/front3.jpg", "img/front4.jpg"]
+
+          function volgendefoto() {
+              if (++currentPos >= images.length)
+                  currentPos = 0;
+
+              image.src = images[currentPos];
+          }
+
+          setInterval(volgendefoto, 3000);
+        </script>
+      </div>
+  </body>
+</html>
