@@ -4,16 +4,31 @@
     <meta charset="utf-8">
     <title>Per Arne Glorvigen</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript">
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "navbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "navbar";
+        }
+    }
+    </script>
+
   </head>
   <body style="background-color:black">
     <div class="banner">
-      <div class="navbar">
+      <div class="navbar" id="myTopnav">
         <a href="index.html"><img src="img/logo.png" class="logo"></a>
         <ul>
           <li><a href="performances.html">Performances</a></li>
           <li><a href="discography.html">Discography</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+          </a>
         </div>
       </div>
       <div class="content">
@@ -23,13 +38,33 @@
           var currentPos = 0;
           var images = ["img/front2.jpg", "img/front3.jpg", "img/front4.jpg"]
 
+          function fade(el) {
+            el.style.opacity = 0;
+            var tick = function () {
+                el.style.opacity = +el.style.opacity + 0.01;
+                if (+el.style.opacity < 1) {
+                    (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+                }
+                if (+el.style.opacity>0.89){
+                  tick2()
+                }
+            };
+            tick();
+            var tick2 = function () {
+                el.style.opacity = +el.style.opacity - 0.01;
+                if (+el.style.opacity > 0) {
+                    (window.requestAnimationFrame && requestAnimationFrame(tick2)) || setTimeout(tick2, 16)
+                }
+            };
+            tick2()
+          }
           function volgendefoto() {
               if (++currentPos >= images.length)
                   currentPos = 0;
 
               image.src = images[currentPos];
           }
-
+          setInterval(fade(image), 3000);
           setInterval(volgendefoto, 3000);
         </script>
       </div>
