@@ -25,6 +25,7 @@
           <li><a href="performances.html">Performances</a></li>
           <li><a href="discography.html">Discography</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="contact.html">Contact</a></li>
           <a href="javascript:void(0);" class="icon" onclick="myFunction()">
             <i class="fa fa-bars"></i>
@@ -32,13 +33,17 @@
         </div>
       </div>
       <div class="content">
-        <img id="centerImg" class="image" src="img/front2.jpg">
+        <img id="centerImg" class="image">
         <script type = "text/javascript">
           var image = document.getElementById("centerImg");
-          var currentPos = 0;
           var images = ["img/front2.jpg", "img/front3.jpg", "img/front4.jpg"]
 
+          function init(el) {
+            el.src = images[0];
+          }
+
           function fade(el) {
+            
             el.style.opacity = 0;
             var tick = function () {
                 el.style.opacity = +el.style.opacity + 0.01;
@@ -47,25 +52,25 @@
                 }
                 if (+el.style.opacity>0.89){
                   tick2()
+                
                 }
             };
             tick();
             var tick2 = function () {
                 el.style.opacity = +el.style.opacity - 0.01;
+                if (+el.style.opacity==0){
+                  var images = ["img/front2.jpg", "img/front3.jpg", "img/front4.jpg"]
+                    index=images.indexOf(el.src.substr(-14))
+                    el.src = images[(index+1)%images.length];
+                }
                 if (+el.style.opacity > 0) {
                     (window.requestAnimationFrame && requestAnimationFrame(tick2)) || setTimeout(tick2, 16)
                 }
             };
-            tick2()
+            tick2()            
           }
-          function volgendefoto() {
-              if (++currentPos >= images.length)
-                  currentPos = 0;
-
-              image.src = images[currentPos];
-          }
+          setInterval(init(image), 30000000)
           setInterval(fade(image), 3000);
-          setInterval(volgendefoto, 3000);
         </script>
       </div>
   </body>
