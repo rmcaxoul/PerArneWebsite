@@ -1,0 +1,58 @@
+.grid {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    color: antiquewhite;
+    font-size: 22px;
+    text-align: center;
+    width: 300px;
+}
+
+.img {
+    height: 300px;
+    width: 300px;
+}
+
+.logol,
+.logor {
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.h3 {
+    display: inline-block;
+}
+
+@media screen and (max-width:1000px) and (min-height:1200px) {
+    .container {
+        width: 500px;
+    }
+
+    .img {
+        height: 500px;
+        width: 500px;
+    }
+
+    .logol,
+    .logor {
+        height: 80px;
+        width: 80px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+}
